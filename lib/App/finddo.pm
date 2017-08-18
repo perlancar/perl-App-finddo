@@ -35,11 +35,17 @@ $SPEC{finddo} = {
 
 *EARLY RELEASE, MANY FEATURES ARE NOT YET IMPLEMENTED OR DEFINED.*
 
-The *finddo* utility is a convenient alternative for the Unix *find* command,
-for the more specific purpose of running a command with the matching files as
-arguments. It provides convenience options such as `--largest`, `--newest`, or
-`--media`, `--audio`, `--video`, or `-n`. So to play the 3 newest songs, instead
-of doing:
+The problem: due to the Unix toolbox philosophy, searching files might be not as
+simple as it should be. For example, find can search files based on some
+criteria like regex pattern, size, mtime, and so on, plus it can feed it to a
+command (including multiple filenames into a single command, e.g. `find ...
+-exec mpv -- '{}' +`). However, it does not do sorting or result limiting.
+
+The *finddo* utility is a convenient alternative for the Unix command
+combination *find* (with *ls*, *sort*, *head*, *tail*, or *xargs*) for the more
+specific purpose of running a command with the matching files as arguments. It
+provides convenience options such as `--largest`, `--newest`, or `--media`,
+`--audio`, `--video`, or `-n`. So to play the 3 newest songs, instead of doing:
 
     ls --sort=t *.mp3 *.m4a *.flac *.ogg 2>/dev/null | head -n3 | xargs mpv --
 
