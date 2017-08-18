@@ -37,9 +37,11 @@ $SPEC{finddo} = {
 
 The problem: due to the Unix toolbox philosophy, searching files might be not as
 simple as it should be. For example, find can search files based on some
-criteria like regex pattern, size, mtime, and so on, plus it can feed it to a
-command (including multiple filenames into a single command, e.g. `find ...
--exec mpv -- '{}' +`). However, it does not do sorting or result limiting.
+criteria like regex pattern, size, mtime, and so on, plus it can feed the result
+to a command (including multiple filenames into a single command, e.g. `find ...
+-exec mpv -- '{}' +`). However, *find* does not do sorting or result limiting,
+which is why you normally combine it with *xargs*, *head*, *tail*, *sort*, and
+so on; which often introduces quoting problems.
 
 The *finddo* utility is a convenient alternative for the Unix command
 combination *find* (with *ls*, *sort*, *head*, *tail*, or *xargs*) for the more
